@@ -8,23 +8,11 @@ use Illuminate\View\View;
 
 class PostController extends Controller
 {
-    public function index(Request $request): View
+    public function index(): View
     {
-        $query = Post::query()->where('is_published', true);
+        $posts = Post::where('is_published', 1)->orderByDesc('published_at')->paginate(5);
 
-        if ($search = trim((string)$request->get('q'))) {
-            $query->where(function ($q) use ($search) {
-                $q->where('title', 'like', "%{$search}%")
-                    ->orWhere('body', 'like', "%{$search}%");
-            });
-        }
-
-        $posts = $query->orderByDesc('published_at')
-            ->orderByDesc('created_at')
-            ->paginate(4)
-            ->withQueryString();
-
-        return view('admin.posts.index', compact('posts'));
+        return view('posts.index', compact('posts'));
     }
 
     public function show(Post $post): View

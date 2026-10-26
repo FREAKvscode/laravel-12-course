@@ -18,7 +18,7 @@
         @if(isset($post) && $post->image)
             <div class="mt-3">
                 <p class="text-sm text-gray-400">Текущее изображение</p>
-                <img src="{{ $post->image }}" alt="" class="mt-2 h-32 rounded object-cover" />
+                <img src="{{ $post->image_url }}" alt="" class="mt-2 h-32 rounded object-cover" />
                 <label class="mt-2 inline-flex items-center gap-2 text-sm">
                     <input type="checkbox" name="remove_image" value="1">
                     Удалить изображение

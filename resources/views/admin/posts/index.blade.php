@@ -8,7 +8,7 @@
             <h1 class="text-xl font-bold">Посты</h1>
             <p class="text-sm text-gray-400">Управляйте контентом блога</p>
         </div>
-        <a href="{{ route('posts.create') }}" class="btn btn-primary cursor-pointer p-1 rounded-xl">+ Новый пост</a>
+        <a href="{{ route('admin.posts.create') }}" class="btn btn-primary cursor-pointer p-1 rounded-xl">+ Новый пост</a>
     </div>
 
     <div class="glass rounded-2xl p-4 border border-white/10">
@@ -44,7 +44,7 @@
                 <tr>
                     <td class="px-4 py-3">{{ $post->id }}</td>
                     <td class="px-4 py-3">
-                        <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a>
+                        <a href="{{ route('admin.posts.show', $post->id) }}">{{ $post->title }}</a>
                     </td>
                     <td class="px-4 py-3">
                         <span class="badge">{{ $post->is_published ? 'Опубликован' : 'В драфте'}}</span>
@@ -62,7 +62,6 @@
                     </td>
                 </tr>
             @endforeach
-            <!-- ... -->
             </tbody>
         </table>
     </div>

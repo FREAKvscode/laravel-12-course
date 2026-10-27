@@ -16,6 +16,18 @@
         <nav class="flex items-center gap-6 text-sm text-gray-300">
             <a href="{{ route('blog.index') }}" class="hover:text-white transition">Посты</a>
             <a href="#" class="hover:text-white transition">О проекте</a>
+
+            @auth
+                <a href="{{ route('admin.posts.index') }}" class="text-sm">Dashboard</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="text-sm text-red-600">Выйти</button>
+                </form>
+            @endauth
+            @guest
+                <a href="{{ route('login') }}" class="text-sm">Войти</a>
+                <a href="{{ route('register') }}" class="text-sm">Регистрация</a>
+            @endguest
         </nav>
     </div>
 </header>

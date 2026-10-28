@@ -20,6 +20,10 @@ class AuthService implements AuthServiceInterface
             'email' => $data['email'],
             'password' => $data['password'],
         ]);
+
+        $user->sendEmailVerificationNotification();
+
+        return $user;
     }
 
     public function attemptLogin(string $email, string $password, bool $remember = false): bool
